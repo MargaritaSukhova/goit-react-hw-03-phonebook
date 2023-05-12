@@ -51,8 +51,8 @@ const normalizedFilter = this.state.filter.toLocaleLowerCase();
   }
   componentDidMount() {
     const contacts = JSON.parse(localStorage.getItem('contacts'));
-    console.log(contacts);
-    this.setState({ contacts })
+
+    if (contacts)  this.setState({ contacts })
   }
 
   componentDidUpdate(prevProps, prevState) {
