@@ -49,17 +49,21 @@ class App extends Component {
 const normalizedFilter = this.state.filter.toLocaleLowerCase();
    return this.state.contacts.filter(contact => contact.name.toLocaleLowerCase().includes(normalizedFilter))
   }
-  
+  componentDidMount() {
+    const contacts = JSON.parse(localStorage.getItem('contacts'));
+    console.log(contacts);
+    this.setState({ contacts })
+  }
+
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.contacs !== prevState.contatcs) {
-    console.log("new")
+    if (this.state.contacts !== prevState.contatcs) {
+    localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
   }
   }
   
   render() {
 
     const visibleContacs = this.getVisibleContacts();
-    console.log(visibleContacs);
 
     return (
       <Container>
