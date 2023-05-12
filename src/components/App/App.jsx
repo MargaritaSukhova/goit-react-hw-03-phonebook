@@ -50,7 +50,12 @@ const normalizedFilter = this.state.filter.toLocaleLowerCase();
    return this.state.contacts.filter(contact => contact.name.toLocaleLowerCase().includes(normalizedFilter))
   }
   
-
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacs !== prevState.contatcs) {
+    console.log("new")
+  }
+  }
+  
   render() {
 
     const visibleContacs = this.getVisibleContacts();
